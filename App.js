@@ -1,13 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import {DATA} from './Data';
+import Row from './Row';
 
 export default function App() {
+  
+  /*
+  function renderItem({item}) {
+    return  (<Text>{item.lastname}</Text>);
+  }
+  
+
+  const renderItem = ({item}) => (
+    <Text>{item.lastname}</Text>
+  );
+  */
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem = {({item}) => (
+          <Row person={item} />
+        )}
+      ></FlatList>
+    </SafeAreaView>
   );
 }
 
@@ -15,7 +33,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
+
+
+ /*
+ 
+
+    renderItem = {({item}) => (
+          <Text>{item.lastname}</Text>
+        )}
+*/
