@@ -13,7 +13,6 @@ export default function Search({executeSearch}) {
         returnKeyType="search"
         onSubmitEditing={() => executeSearch(search)}
         />
-        
     </View>
   )
 }

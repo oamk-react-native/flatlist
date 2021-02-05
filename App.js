@@ -7,6 +7,7 @@ import Search from './Search';
 
 export default function App() {
   const [items, setItems] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     setItems(DATA);
@@ -29,13 +30,19 @@ export default function App() {
     setItems(searchArray);
   }
 
+  const select = (id) => {
+    setSelectedId(id);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Search executeSearch={executeSearch} />
       <FlatList
         data={items}
+        keyExtractor={(item) => item.id}
+        extraData={selectedId}
         renderItem = {({item}) => (
-          <Row person={item} />
+          <Row person={item} selectedId={selectedId} select={select}/>
         )}
       ></FlatList>
     </SafeAreaView>

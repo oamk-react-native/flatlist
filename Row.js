@@ -1,9 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
-export default function Row({person}) {
+export default function Row({person,selectedId, select}) {
+  const backgroundColor = person.id === selectedId ? '#c0c0c0': '#f5f5f5';
+
   return (
-    <Text style={styles.row}>{person.lastname}, {person.firstname}</Text>
+    <Pressable onPress={() => select(person.id)}>
+      <Text 
+        style={[styles.row,{backgroundColor}]}>
+          {person.lastname}, {person.firstname}
+        </Text>
+    </Pressable>
   )
 }
 
