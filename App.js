@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
-import { FlatList, SafeAreaView, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {DATA} from './Data';
-import Row from './Row';
-import Search from './Search';
+import Row from './components/Row';
+import Search from './components/Search';
+import Constants from 'expo-constants';
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -12,18 +12,6 @@ export default function App() {
   useEffect(() => {
     setItems(DATA);
   }, [])
-
-
-  /*
-  function renderItem({item}) {
-    return  (<Text>{item.lastname}</Text>);
-  }
-  
-
-  const renderItem = ({item}) => (
-    <Text>{item.lastname}</Text>
-  );
-  */
 
   const executeSearch = (search) => {
     const searchArray = DATA.filter((item) => item.lastname.startsWith(search));
@@ -51,17 +39,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: Constants.statusBarHeight,
     flex: 1,
     backgroundColor: '#fff',
     margin: 10
   },
 });
-
-
- /*
- 
-
-    renderItem = {({item}) => (
-          <Text>{item.lastname}</Text>
-        )}
-*/
