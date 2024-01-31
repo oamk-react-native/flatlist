@@ -3,6 +3,7 @@ import { FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {DATA} from './Data';
 import Row from './components/Row';
 import Search from './components/Search';
+import Add from './components/Add';
 import Constants from 'expo-constants';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Search executeSearch={executeSearch} />
+      <Add items={items} setItems={setItems}/>
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
@@ -41,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
-    backgroundColor: '#fff',
-    margin: 10
+    margin: 10,
   },
 });
