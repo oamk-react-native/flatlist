@@ -14,6 +14,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
+    //AsynStorage.clear()
     //setItems(DATA);
     getData()
   }, [])
@@ -36,7 +37,7 @@ export default function App() {
     }
   }
 
-  const getData = async(value) => {
+  const getData = async() => {
     try { 
       const value = await  AsyncStorage.getItem(STORAGE_KEY)
       const json = JSON.parse(value)
